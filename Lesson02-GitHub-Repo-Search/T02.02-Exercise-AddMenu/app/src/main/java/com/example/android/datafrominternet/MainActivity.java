@@ -15,10 +15,14 @@
  */
 package com.example.android.datafrominternet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +43,23 @@ public class MainActivity extends AppCompatActivity {
         mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemSelected = item.getItemId();
+        Context context = MainActivity.this;
+        if (itemSelected == R.id.action_search) {
+            Toast.makeText(context, "Search Clicked", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
     // Do 2 - 7 in menu.xml ///////////////////////////////////////////////////////////////////////
     // TODO (2) Create a menu xml called 'main.xml' in the res->menu folder
     // TODO (3) Add one menu item to your menu
