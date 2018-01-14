@@ -38,19 +38,40 @@
 
     <!--TODO (2) Wrap the ScrollView in a FrameLayout-->
     <!--TODO (3) Make the width and height of the FrameLayout match_parent-->
-
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tv_github_search_results_json"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make a search!"
+                android:textSize="18sp" />
+        </ScrollView>
 
         <TextView
-            android:id="@+id/tv_github_search_results_json"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Make a search!"
-            android:textSize="18sp" />
-    </ScrollView>
+            android:id="@+id/tv_error_message_display"
+            android:padding="16dp"
+            android:text="@string/err_string"
+            android:visibility="invisible"
+            android:textSize="22sp"/>
+        
+        <ProgressBar
+            android:id="@+id/pb_loading_indicator"
+            android:visibility="invisible"
+            android:layout_gravity="center"
+            android:layout_width="42dp"
+            android:layout_height="42dp" />
+
+    </FrameLayout>
 
     <!--TODO (4) Add a TextView to display an error message-->
     <!--TODO (5) Set the text size to 22sp-->
@@ -62,6 +83,7 @@
     <!--TODO (11) Make this TextView a child of the FrameLayout that you added above-->
 
     <!--TODO (18) Add a ProgressBar to indicate loading to your users-->
+    
     <!--TODO (19) Give the ProgressBar an id of @+id/pb_loading_indicator-->
     <!--TODO (20) Set the layout_height and layout_width to 42dp-->
     <!--TODO (21) Set the layout_gravity to center-->
