@@ -121,11 +121,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 float size = Float.parseFloat(data);
 
                 if (size <= 0 || size > 3) {
-                    Toast.makeText(getContext(), "Set value between 1 -> 3", Toast.LENGTH_LONG);
+                    Toast.makeText(getContext(), "Set value between 1 -> 3", Toast.LENGTH_LONG).show();
                     return false;
                 }
             } catch (NumberFormatException nfe) {
-                Toast.makeText(getContext(), "Set value between 1 -> 3", Toast.LENGTH_LONG);
+                Toast.makeText(getContext(), "Set value between 1 -> 3", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
