@@ -49,6 +49,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
             if (!(p instanceof CheckBoxPreference)) {
                 String value = sharedPreferences.getString(p.getKey(), "");
                 setPreferenceSummary(p, value);
+            } else if ((p instanceof EditTextPreference)) {
+                p.setSummary(s);
             }
         }
     }
@@ -62,6 +64,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
             if (!(preference instanceof CheckBoxPreference)) {
                 String value = sharedPreferences.getString(preference.getKey(), "");
                 setPreferenceSummary(preference, value);
+            } else if ((preference instanceof EditTextPreference)) {
+                setPreferenceSummary(preference, key);
             }
         }
     }
@@ -82,6 +86,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 // Set the summary to that label
                 listPreference.setSummary(listPreference.getEntries()[prefIndex]);
             }
+        } else if (preference instanceof EditTextPreference) {
+            preference.setSummary(value);
         }
     }
     
