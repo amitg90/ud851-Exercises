@@ -4,7 +4,12 @@ import android.provider.BaseColumns;
 
 public class WaitlistContract {
 
-
+    public class WaitListEntry implements BaseColumns {
+        static final String table_name = "waitlist";
+        static final String COLUMN_GUEST_NAME = "guestName";
+        static final String COLUMN_PARTY_SIZE = "partySize";
+        static final String COLUMN_TIMESTAMP = "timestamp";
+    }
 
     // TODO (1) Create an inner class named WaitlistEntry class that implements the BaseColumns interface
 
