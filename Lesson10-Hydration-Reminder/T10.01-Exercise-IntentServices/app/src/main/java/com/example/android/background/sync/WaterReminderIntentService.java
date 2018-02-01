@@ -14,7 +14,29 @@
  * limitations under the License.
  */
 
+
+package com.example.android.background.sync;
+import android.app.IntentService;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.example.android.background.sync.ReminderTasks;
+
 // TODO (9) Create WaterReminderIntentService and extend it from IntentService
+public class WaterReminderIntentService extends IntentService {
+
+    public WaterReminderIntentService() {
+        super("WaterReminderIntentService");
+    }
+
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+        String action = intent.getAction();
+        Log.e("AMIT!!", "Incrementing Tasks!!");
+        ReminderTasks.executeTask(this, action);
+    }
+}
 
 //  TODO (10) Create a default constructor that calls super with the name of this class
 
