@@ -15,7 +15,44 @@
  */
 package com.example.android.background.sync;
 
-public class WaterReminderFirebaseJobService {
+import android.app.job.JobParameters;
+import com.firebase.jobdispatcher.JobService;
+import android.os.AsyncTask;
+import android.util.Log;
+
+public class WaterReminderFirebaseJobService extends JobService {
+    AsyncTask mBackground;
+
+    @Override
+    public boolean onStartJob(com.firebase.jobdispatcher.JobParameters jobParameters) {
+        final com.firebase.jobdispatcher.JobParameters jobParameter = jobParameters;
+
+        Log.e("AMIT", "CALLED");
+
+        AsyncTask async = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                ReminderTasks.executeTask(WaterReminderFirebaseJobService.this, ReminderTasks.ACTION_CHARGING_NOTIFICATION);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                jobFinished(jobParameter, false);
+            }
+        };
+        mBackground = async;
+        async.execute();
+        return true;
+    }
+
+    @Override
+    public boolean onStopJob(com.firebase.jobdispatcher.JobParameters jobParameters) {
+        if (mBackground != null) {
+            mBackground.cancel(true);
+        }
+        return true;
+    }
     // TODO (3) WaterReminderFirebaseJobService should extend from JobService
 
     // TODO (4) Override onStartJob
